@@ -5,7 +5,8 @@ from selenium.webdriver import ActionChains, Keys
 from pageObject.preprod.User_Login_Page import User_Login
 from pageObject.preprod.Login_Page import Login
 from pageObject.preprod.Manager_flow import Manager
-from utilities.excel_reader import read_beta_test_data, read_preprod_test_data
+from utilities.excel_reader import read_beta_test_data, read_preprod_test_data, read_preprod_account_test_data
+
 
 # load_dotenv()
 
@@ -65,3 +66,7 @@ def manager_flow(preprod_setup):
 @pytest.fixture(scope='session')
 def preprod_test_data():
     return read_preprod_test_data()
+
+@pytest.fixture(scope='session')
+def preprod_account_test_data():
+    return read_preprod_account_test_data()

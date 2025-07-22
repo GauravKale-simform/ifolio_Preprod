@@ -2,7 +2,7 @@ import os
 import openpyxl
 
 def read_test_data():
-    file_path = "C://Users//gaurav//Desktop//iFOLIO//Automation//iFOLIO_auto//utilities//test_data.xlsx"
+    file_path = "C://Users//gaurav//Desktop//iFOLIO//Automation//ifolio_preprod//preprod//utilities//test_data.xlsx"
 
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook.active
@@ -27,8 +27,8 @@ def read_test_data():
             'user_email':user_email,'user_password':user_password,'Email_message':email_message,
             'Campaign_name':campaign_name,'Group_message':group_message}
 
-def read_beta_test_data():
-    file_path = "C://Users//gaurav//Desktop//iFOLIO//Automation//iFOLIO_auto//utilities//Beta_test_data.xlsx"
+def read_preprod_account_test_data():
+    file_path = "C://Users//gaurav//Desktop//iFOLIO//Automation//ifolio_preprod//preprod//utilities//preprod_account_test_data.xlsx"
 
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook.active
@@ -101,7 +101,7 @@ def read_beta_test_data():
             'select_ifolio':Select_ifolio,'rename_ifolio':Rename_ifolio}
 
 def read_preprod_test_data():
-    file_path = "C://Users//gaurav//Desktop//iFOLIO//Automation//iFOLIO_auto//utilities//preprod_test_data.xlsx"
+    file_path = "C://Users//gaurav//Desktop//iFOLIO//Automation//ifolio_preprod//preprod//utilities//preprod_test_data.xlsx"
 
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook.active
