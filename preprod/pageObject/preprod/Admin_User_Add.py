@@ -45,8 +45,7 @@ class AddUser:
         self.wait = WebDriverWait(self.driver,30)
 
     def click_on_user(self):
-        Users = self.wait.until(EC.element_to_be_clickable(AddUser.User_xpath))
-        Users.click()
+        self.wait.until(EC.element_to_be_clickable(AddUser.User_xpath)).click()
         self.wait.until(EC.visibility_of_element_located(AddUser.First_User_xpath))
 
     def click_on_add_user(self):
@@ -55,8 +54,7 @@ class AddUser:
 
     def select_account(self,account):
         self.driver.find_element(*AddUser.Account_xpath).send_keys(account)
-        account = self.wait.until(EC.element_to_be_clickable(AddUser.Select_Account_xpath))
-        account.click()
+        self.wait.until(EC.element_to_be_clickable(AddUser.Select_Account_xpath)).click()
 
     def enter_first_name(self,name):
         self.driver.find_element(*AddUser.FirstName_xpath).send_keys(name)
