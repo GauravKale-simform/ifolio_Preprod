@@ -18,10 +18,16 @@ class CreateTemplate:
     TemplateName_xpath = (By.XPATH,"//input[@value='Automation']") #this will be dynamic
     Delete_confirmation_dialog_xpath = (By.XPATH,"//div[@class='sc-krNlru gpPELw']")
     Ok_Button_xpath = (By.XPATH,"//span[contains(text(),'Ok')]")
+    Close_ToastMessage_xpath = (By.XPATH, "//button[@class='Toastify__close-button Toastify__close-button--success']")
+    Next_Button_xpath = (By.XPATH,'//div[@class="sc-dcJsrY yfVNX"]')
 
     def __init__(self,driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 30)
+
+    def wait_for_first_account_to_display(self):
+        self.wait.until(EC.element_to_be_clickable(CreateTemplate.Close_ToastMessage_xpath)).click()
+        self.wait.until(EC.visibility_of_element_located(CreateTemplate.First_account_xpath))
 
     def click_on_templates(self):
         self.wait.until(EC.visibility_of_element_located(CreateTemplate.First_account_xpath))
@@ -58,6 +64,7 @@ class CreateTemplate:
         admin_panel.click()
 
     def verify_ifolio_in_admin_panel(self,name):
+        self.wait.until(EC.element_to_be_clickable(CreateTemplate.Next_Button_xpath)).click()
         TemplateName_xpath = f"//input[@value='{name}']"
         self.wait.until(EC.presence_of_all_elements_located((By.XPATH,TemplateName_xpath)))
 
@@ -66,9 +73,7 @@ class CreateTemplate:
         element = self.wait.until(EC.element_to_be_clickable((By.XPATH,xpath)))
         element.click()
         self.wait.until(EC.visibility_of_element_located(CreateTemplate.Delete_confirmation_dialog_xpath))
-        ok = self.wait.until(EC.element_to_be_clickable(CreateTemplate.Ok_Button_xpath))
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", ok)
-        ok.click()
+        self.wait.until(EC.element_to_be_clickable(CreateTemplate.Ok_Button_xpath)).click()
         self.wait.until(EC.invisibility_of_element_located(CreateTemplate.Loader_xpath))
         time.sleep(2)
 
