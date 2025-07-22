@@ -25,7 +25,7 @@ def get_driver(browser):
     else:
         return webdriver.Chrome()
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='module')
 def preprod_setup(browser, request,preprod_test_data):
     driver = get_driver(browser)
     driver.maximize_window()
@@ -37,7 +37,7 @@ def preprod_setup(browser, request,preprod_test_data):
     lp.click_on_signin_button()
     return driver
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='module')
 def preprod_user_setup(browser, request, preprod_test_data):
     driver = get_driver(browser)
     driver.maximize_window()
