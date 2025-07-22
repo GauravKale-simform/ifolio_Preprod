@@ -6,8 +6,6 @@ from pageObject.preprod.User_Login_Page import User_Login
 from pageObject.preprod.Login_Page import Login
 from pageObject.preprod.Manager_flow import Manager
 from utilities.excel_reader import read_preprod_test_data, read_preprod_account_test_data
-
-
 # load_dotenv()
 
 def pytest_addoption(parser):
@@ -27,7 +25,7 @@ def get_driver(browser):
     else:
         return webdriver.Chrome()
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def preprod_setup(browser, request,preprod_test_data):
     driver = get_driver(browser)
     driver.maximize_window()
@@ -39,7 +37,7 @@ def preprod_setup(browser, request,preprod_test_data):
     lp.click_on_signin_button()
     return driver
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def preprod_user_setup(browser, request, preprod_test_data):
     driver = get_driver(browser)
     driver.maximize_window()
@@ -50,7 +48,6 @@ def preprod_user_setup(browser, request, preprod_test_data):
     ulp.enter_password(preprod_test_data['user_password'])
     ulp.click_on_signin_button()
     return driver
-
 
 @pytest.fixture
 def manager_flow(preprod_setup):
