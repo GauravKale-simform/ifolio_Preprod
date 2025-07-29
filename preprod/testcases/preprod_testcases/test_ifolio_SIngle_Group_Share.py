@@ -1,5 +1,5 @@
-from pageObject.preprod.ifolio_Single_Share import SingleShare
-from pageObject.preprod.ifolio_Group_Share import GroupShare
+from preprod.pageObject.preprod.ifolio_Single_Share import SingleShare
+from preprod.pageObject.preprod.ifolio_Group_Share import GroupShare
 
 class TestIfolio:
     def test_single_share(self, preprod_user_setup, preprod_test_data):

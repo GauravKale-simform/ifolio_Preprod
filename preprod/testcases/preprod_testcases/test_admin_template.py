@@ -1,4 +1,4 @@
-from pageObject.preprod.Admin_Template import CreateTemplate
+from preprod.pageObject.preprod.Admin_Template import CreateTemplate
 
 class TestCreateTemplate:
     def test_create_template(self,preprod_setup,preprod_account_test_data):

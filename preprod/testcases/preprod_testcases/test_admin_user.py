@@ -1,8 +1,8 @@
 import datetime
-from pageObject.preprod.Admin_User_Add import AddUser
-from testcases.preprod_testcases.conftest import preprod_account_test_data
-from pageObject.preprod.Admin_User_Search import UserSearch
-from pageObject.preprod.Admin_User_Delete import DeleteUser
+from preprod.pageObject.preprod.Admin_User_Add import AddUser
+from preprod.testcases.preprod_testcases.conftest import preprod_account_test_data
+from preprod.pageObject.preprod.Admin_User_Search import UserSearch
+from preprod.pageObject.preprod.Admin_User_Delete import DeleteUser
 
 class TestAddUser:
     def test_add_user(self,preprod_setup,preprod_account_test_data):
@@ -31,6 +31,7 @@ class TestAddUser:
     def test_search_user(self, preprod_setup, preprod_account_test_data):
         self.driver = preprod_setup
         # time.sleep(10)
+        self.AU.click_on_add_user()
         self.SU = UserSearch(self.driver)
         self.SU.click_on_user()
         self.SU.click_on_search_button()

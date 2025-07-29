@@ -1,9 +1,9 @@
 import pytest
 from selenium.webdriver import ActionChains, Keys
-from pageObject.preprod.Admin_Account_Search import SearchAccount
-from pageObject.preprod.Admin_Account_Add import AddAccount
-from pageObject.preprod.Admin_Account_Delete import DeleteAccount
-from utilities import excel_reader
+from preprod.pageObject.preprod.Admin_Account_Search import SearchAccount
+from preprod.pageObject.preprod.Admin_Account_Add import AddAccount
+from preprod.pageObject.preprod.Admin_Account_Delete import DeleteAccount
+from preprod.utilities import excel_reader
 
 class TestAddAccount:
     @pytest.mark.parametrize("account_type", ["Enterprise","Educator","Sports","Pro"])

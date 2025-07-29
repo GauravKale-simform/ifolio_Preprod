@@ -1,6 +1,6 @@
 import time
 from datetime import datetime
-from testcases.preprod_testcases.conftest import preprod_test_data
+from preprod.testcases.preprod_testcases.conftest import preprod_test_data
 
 class Testplan2025:
     def test_name_campaign(self,preprod_setup,preprod_test_data,manager_flow):
