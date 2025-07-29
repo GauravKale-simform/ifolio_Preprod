@@ -72,6 +72,7 @@ class CreateTemplate:
         xpath = f"//input[contains(@value,'{name}')]/ancestor::div[4]//div[contains(@class,'sc-eBHhsj')]//span[contains(text(),'Delete')]"
         element = self.wait.until(EC.element_to_be_clickable((By.XPATH,xpath)))
         element.click()
+        time.sleep(1)
         self.wait.until(EC.visibility_of_element_located(CreateTemplate.Delete_confirmation_dialog_xpath))
         self.wait.until(EC.element_to_be_clickable(CreateTemplate.Ok_Button_xpath)).click()
         self.wait.until(EC.invisibility_of_element_located(CreateTemplate.Loader_xpath))

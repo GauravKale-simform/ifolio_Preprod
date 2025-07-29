@@ -30,8 +30,6 @@ class TestAddUser:
 
     def test_search_user(self, preprod_setup, preprod_account_test_data):
         self.driver = preprod_setup
-        # time.sleep(10)
-        self.AU.click_on_add_user()
         self.SU = UserSearch(self.driver)
         self.SU.click_on_user()
         self.SU.click_on_search_button()
