@@ -17,6 +17,7 @@ class Manager:
     Owner_with_login_xpath = (By.XPATH,"//span[contains(text(),'Owner Log in')]")
     ToastMessage_xpath = (By.XPATH, "//div[contains(@class, 'Toastify__toast-body')]")
     Close_ToastMessage_xpath = (By.XPATH, "//button[@class='Toastify__close-button Toastify__close-button--success']")
+    Close_Error_ToastMessage_xpath = (By.XPATH,"//button[@class='Toastify__close-button Toastify__close-button--error']")
 
     Campaigns_xpath = (By.XPATH,"//a[@href='/campaigns']")
     Campaign_Name_xpath = (By.XPATH,"//input[@id='step1-ChooseIfolio-input-campaignName']")
@@ -50,6 +51,10 @@ class Manager:
 
     Upload_List_xpath = (By.XPATH, "//input[@type='file']")
     Schedule_xpath = (By.XPATH,"(//span[contains(text(),'Schedule')])[2]")
+    Campaign_Sent_xpath = (By.XPATH,"//div[contains(text(),'Campaign Sent')]")
+    Ok_Button_xpath = (By.XPATH,"//span[contains(text(),'Ok')]")
+    Campaign_Scheduler_xpath = (By.XPATH,"//div[contains(text(),'Campaign Scheduler')]")
+
 
     def __init__(self, driver):
         self.driver = driver
@@ -141,7 +146,7 @@ class Manager:
         self.driver.find_element(*Manager.Next_step_xpath).click()
 
     def upload_contact_list(self):
-        file_path = r'C://Users//gaurav//Desktop//iFOLIO//Automation//iFOLIO_auto//utilities//Campaign_Sharing.xlsx'
+        file_path = r'C://Users//gaurav//Desktop//iFOLIO//Automation//ifolio_preprod//preprod//utilities//Campaign_Sharing.xlsx'
         upload_input = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.Upload_List_xpath))
         self.driver.execute_script("arguments[0].style.display = 'block';", upload_input)
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.Upload_List_xpath))
@@ -153,6 +158,14 @@ class Manager:
     def wait_for_all_images_to_load(self):
         self.wait.until(lambda d: d.execute_script("""return Array.from(document.images).every(img => img.complete && img.naturalHeight > 0);"""))
 
+    def schedule_campaign(self):
+        self.wait.until(EC.element_to_be_clickable(self.Schedule_xpath)).click()
+        self.wait.until(EC.element_to_be_clickable(self.Close_Error_ToastMessage_xpath)).click()
+        time.sleep(1)
+        self.wait.until(EC.element_to_be_clickable(self.Close_ToastMessage_xpath)).click()
+        self.wait.until(EC.visibility_of_element_located(self.Campaign_Sent_xpath))
+        self.wait.until(EC.element_to_be_clickable(self.Ok_Button_xpath)).click()
+        self.wait.until(EC.visibility_of_element_located(self.Campaign_Scheduler_xpath))
 
 
 

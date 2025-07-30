@@ -23,5 +23,6 @@ class Testplan2025:
         self.MG.click_on_next_step()
         self.MG.upload_contact_list()
         self.MG.scroll(200)
+        self.MG.schedule_campaign()
 
 

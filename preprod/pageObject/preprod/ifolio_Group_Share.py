@@ -33,7 +33,7 @@ class GroupShare:
         WebDriverWait(self.driver,30).until(EC.visibility_of_element_located(GroupShare.Group_Share_DialogBox_xpath))
 
     def upload_list(self):
-        file_path = r'C://Users//gaurav//Desktop//iFOLIO//Automation//iFOLIO_auto//utilities//groupshare.xlsx'
+        file_path = r'C://Users//gaurav//Desktop//iFOLIO//Automation//ifolio_preprod//preprod//utilities//groupshare.xlsx'
         # file_path = os.path.abspath("utilities/groupshare.xlsx")
         upload_input = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.Upload_List_xpath))
         self.driver.execute_script("arguments[0].style.display = 'block';", upload_input)
