@@ -36,7 +36,7 @@ class UploadImage:
     def delete_image(self):
         self.wait.until(EC.element_to_be_clickable(UploadImage.Delete_Image_xpath)).click()
         self.wait.until(EC.visibility_of_element_located(UploadImage.Delete_Dialog_box_xpath))
-        time.sleep(2)
         self.wait.until(EC.element_to_be_clickable(UploadImage.Ok_button_xpath)).click()
+        time.sleep(2)
         self.wait.until(EC.invisibility_of_element_located(UploadImage.Close_ToastMessage_xpath))
 
